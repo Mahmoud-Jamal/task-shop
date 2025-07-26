@@ -3,6 +3,16 @@
     <div class="p-5">
       <h2 class="text-3xl font-bold">Categories</h2>
       <div class="flex sm:block flex-wrap">
+        <div class="m-3">
+          <input
+            class="mr-2"
+            type="checkbox"
+            name=""
+            id="all"
+            (change)="filtration2($event)"
+          />
+          <label for="all">All</label>
+        </div>
         @for(category of categories; track $index){
         <div class="m-3">
           <input

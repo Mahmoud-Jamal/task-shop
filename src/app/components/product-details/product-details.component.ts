@@ -1,3 +1,4 @@
+import { SharedService } from './../../services/shared.service';
 import { Component, inject, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
@@ -13,14 +14,20 @@ import { NgClass } from '@angular/common';
 export class ProductDetailsComponent implements OnInit {
   private readonly productService = inject(ProductService);
   private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly sharedService = inject(SharedService);
   productId: string = '';
   product!: Product;
   quantity: number = 1;
   clothingCategories = ["men's clothing", "women's clothing", 'jewelery'];
   maxStars: number = 5;
   isFavorite: boolean = false;
+  nav: boolean = true;
+  constructor() {}
 
   ngOnInit(): void {
+    this.sharedService.nav.set(false);
+    console.log(this.sharedService.nav());
+
     this.product = this.activatedRoute.snapshot.data['product'];
   }
 
@@ -40,5 +47,9 @@ export class ProductDetailsComponent implements OnInit {
   }
   toggleFavorite(): void {
     this.isFavorite = !this.isFavorite;
+  }
+  ngOnDestroy(): void {
+    this.sharedService.nav.set(true);
+    console.log(this.sharedService.nav());
   }
 }

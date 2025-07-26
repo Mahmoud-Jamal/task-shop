@@ -6,6 +6,7 @@ export class SharedService {
   sortOption: WritableSignal<string | null> = signal(null);
   searchValue: WritableSignal<string> = signal('');
   categories: WritableSignal<string[]> = signal([]);
+  nav: WritableSignal<boolean> = signal(true);
   private trigger = new Subject<void>();
   trigger$ = this.trigger.asObservable();
 

@@ -129,4 +129,9 @@ export class HomeComponent implements OnInit {
     );
     console.log(this.filterProduct);
   }
+  filtration2(e: any) {
+    if (e.target.checked) {
+      this.filterProduct = this.allProducts;
+    }
+  }
 }
