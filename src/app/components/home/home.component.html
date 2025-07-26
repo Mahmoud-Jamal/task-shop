@@ -1,0 +1,31 @@
+<div class="flex flex-wrap md:flex-nowrap bg-gray-100 pt-7">
+  <div class="max-h-[calc(100vh-56px)] min-w-[250px] sm:sticky static top-10">
+    <div class="p-5">
+      <h2 class="text-3xl font-bold">Categories</h2>
+      <div class="flex sm:block flex-wrap">
+        @for(category of categories; track $index){
+        <div class="m-3">
+          <input
+            [value]="category.category"
+            class="mr-2"
+            type="checkbox"
+            (change)="filtration($event)"
+            name=""
+            [id]="category.category"
+          />
+          <label [for]="category.category">{{ category.category }}</label>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+  <div
+    class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 content-center"
+  >
+    @for (item of filterProduct; track $index) {
+
+    <app-card [item]="item"></app-card>
+
+    }
+  </div>
+</div>

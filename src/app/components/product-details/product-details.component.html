@@ -1,0 +1,152 @@
+<div class="bg-gray-100 text-gray-800 min-h-[calc(100vh-80px)]">
+  <div class="max-w-6xl mx-auto p-4">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white p-6 rounded-2xl shadow-lg"
+    >
+      <!-- Product Image -->
+      <div class="w-full">
+        <img
+          [src]="product.image"
+          alt="Product"
+          class="rounded-xl w-full object-cover"
+        />
+      </div>
+
+      <!-- Product Info -->
+      <div class="flex flex-col justify-between space-y-6">
+        <div>
+          <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-bold mb-2">
+              {{ product.title.split(" ").slice(0, 3).join(" ") }}
+            </h1>
+            @if(!isFavorite){
+            <svg
+              (click)="toggleFavorite()"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              width="40"
+              height="40"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M11.998 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42
+                       4.42 3 7.5 3c1.74 0 3.41 0.81 4.498 2.09C13.09 3.81 14.76
+                       3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.548
+                       11.54l-1.454 1.31z"
+              />
+            </svg>
+            }@else {
+            <svg
+              (click)="toggleFavorite()"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="red"
+              viewBox="0 0 24 24"
+              width="40"
+              height="40"
+            >
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28
+                         2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81
+                         4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3
+                         22 5.42 22 8.5c0 3.78-3.4 6.86-8.55
+                         11.54L12 21.35z"
+              />
+            </svg>
+
+            }
+          </div>
+
+          <div class="flex justify-between">
+            <p class="text-xl text-green-600 font-semibold mb-4">
+              ${{ product.price }}
+            </p>
+            <div class="flex items-center mt-2.5 mb-5">
+              <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                @for (star of getStars(); track $index) {
+                <svg
+                  class="w-4 h-4"
+                  [ngClass]="
+                    star <= product.rating.rate
+                      ? 'text-yellow-300'
+                      : 'text-gray-200 dark:text-gray-600'
+                  "
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 22 20"
+                >
+                  <path
+                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534
+                             0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0
+                             1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0
+                             2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0
+                             2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0
+                             .387-1.575Z"
+                  />
+                </svg>
+                }
+              </div>
+              <span
+                class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm dark:bg-blue-200 dark:text-blue-800 ms-3"
+                >{{ product.rating.rate }}</span
+              >
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2"
+              >Quantity</label
+            >
+            <div class="flex items-center space-x-4">
+              <button
+                (click)="decreaseQty()"
+                class="w-10 h-10 text-xl bg-gray-200 hover:bg-gray-300 rounded-full"
+              >
+                -
+              </button>
+              <span class="text-lg font-semibold">{{ quantity }}</span>
+              <button
+                (click)="increaseQty()"
+                class="w-10 h-10 text-xl bg-gray-200 hover:bg-gray-300 rounded-full"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-6">
+            {{ product.description }}
+          </p>
+
+          <!-- Size Selector -->
+          @if (clothingCategories.includes(product.category)){
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2"
+              >Size</label
+            >
+            <select
+              class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              <option>Choose Size</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+          </div>
+          }
+
+          <!-- Add to Cart Button -->
+          <button
+            class="w-full bg-indigo-600 text-white py-3 rounded-xl hover:bg-indigo-700 transition"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
