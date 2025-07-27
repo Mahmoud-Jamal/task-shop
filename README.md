@@ -1,59 +1,63 @@
-# TaskShop
+# 🛍️ Products Gallery Web Application
+ 
+## 🎯 Project Overview
+ 
+This project is a fully responsive Products Gallery web application built as part of the Route Tech Summit Frontend Task. It uses the [Fake Store API](https://fakestoreapi.com/) to display a catalog of products with features such as:
+ 
+- Product listing with images and titles
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
+- Filtering by name
 
-## Development server
+- Sorting by price and alphabetical order
 
-To start a local development server, run:
+- Product detail view with full description, price, category, and rating
 
-```bash
-ng serve
-```
+- Shopping cart management
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Dark mode toggle for enhanced UI experience
+ 
+The goal of the application is to provide users with a seamless and modern e-commerce browsing experience across all devices.
+ 
+---
+ 
+## 🧱 Tech Stack Used
+ 
+- **Framework**: React (v18+)
 
-## Code scaffolding
+- **Styling**: Tailwind CSS
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Routing**: React Router (for dynamic product detail routing)
 
-```bash
-ng generate component component-name
-```
+- **API**: [Fake Store API](https://fakestoreapi.com/)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- **Optional Enhancements**:
 
-```bash
-ng generate --help
-```
+  - Dark Mode Toggle (Tailwind-based theming)
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+  - Product Ratings Display
+ 
+---
+ 
+## 📂 Project Structure (Example)
 
 ```bash
-ng e2e
-```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+├── public/
 
-## Additional Resources
+├── src/
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+│   ├── components/
+
+│   ├── pages/
+
+│   ├── hooks/
+
+│   ├── App.jsx
+
+│   ├── index.js
+
+├── tailwind.config.js
+
+├── package.json
+
+ 
