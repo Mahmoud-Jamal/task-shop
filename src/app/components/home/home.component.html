@@ -5,6 +5,7 @@
       <div class="flex sm:block flex-wrap">
         <div class="m-3">
           <input
+            [checked]="checked1"
             class="mr-2"
             type="checkbox"
             name=""
@@ -16,6 +17,7 @@
         @for(category of categories; track $index){
         <div class="m-3">
           <input
+            [checked]="checked"
             [value]="category.category"
             class="mr-2"
             type="checkbox"

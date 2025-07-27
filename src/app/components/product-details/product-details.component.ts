@@ -26,7 +26,6 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.sharedService.nav.set(false);
-    console.log(this.sharedService.nav());
 
     this.product = this.activatedRoute.snapshot.data['product'];
   }
@@ -50,6 +49,5 @@ export class ProductDetailsComponent implements OnInit {
   }
   ngOnDestroy(): void {
     this.sharedService.nav.set(true);
-    console.log(this.sharedService.nav());
   }
 }

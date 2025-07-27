@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
   checkedArr: any[] = [];
   sortOption: WritableSignal<string | null> = signal('');
   searchValue: WritableSignal<string> = signal('');
+  checked: boolean = true;
+  checked1: boolean = true;
   private readonly productService = inject(ProductService);
   private readonly sharedService = inject(SharedService);
 
@@ -43,7 +45,6 @@ export class HomeComponent implements OnInit {
         next: (products) => {
           this.allProducts = products;
           this.filterProduct = [...products];
-          console.log(this.allProducts);
           this.getCategories();
         },
         error: (error) => {
@@ -56,13 +57,11 @@ export class HomeComponent implements OnInit {
     this.categories = Array.from(
       new Set(this.allProducts.map((item) => item.category))
     ).map((category) => ({ category }));
-    console.log(this.categories);
   }
 
   sorting() {
     this.sortOption.set(this.sharedService.sortOption());
     const option = this.sortOption();
-    console.log(option);
 
     switch (option) {
       case 'priceLow':
@@ -101,21 +100,19 @@ export class HomeComponent implements OnInit {
         console.warn(`Unknown sort option: ${option}`);
         return;
     }
-
-    console.log(this.allProducts);
   }
 
   search() {
     this.searchValue.set(this.sharedService.searchValue());
-    console.log(this.searchValue());
-
     this.filterProduct = this.allProducts.filter((item) =>
       item.title?.toLowerCase().includes(this.searchValue().toLowerCase())
     );
-    console.log(this.filterProduct);
   }
 
   filtration(e: any) {
+    if (this.checked1) {
+      this.checkedArr = [];
+    }
     if (e.target.checked) {
       this.checkedArr.push(e.target.value);
     } else {
@@ -127,9 +124,10 @@ export class HomeComponent implements OnInit {
         ? true
         : this.checkedArr.includes(item.category)
     );
-    console.log(this.filterProduct);
   }
   filtration2(e: any) {
+    this.checkedArr = [];
+    this.checked = !this.checked;
     if (e.target.checked) {
       this.filterProduct = this.allProducts;
     }
