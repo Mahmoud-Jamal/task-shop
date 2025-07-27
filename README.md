@@ -22,17 +22,13 @@ The goal of the application is to provide users with a seamless and modern e-com
  
 ## 🧱 Tech Stack Used
  
-- **Framework**: React (v18+)
+- **Framework**: Angular (v19)
 
 - **Styling**: Tailwind CSS
-
-- **Routing**: React Router (for dynamic product detail routing)
 
 - **API**: [Fake Store API](https://fakestoreapi.com/)
 
 - **Optional Enhancements**:
-
-  - Dark Mode Toggle (Tailwind-based theming)
 
   - Product Ratings Display
  
@@ -41,23 +37,17 @@ The goal of the application is to provide users with a seamless and modern e-com
 ## 📂 Project Structure (Example)
 
 ```bash
-
-├── public/
-
-├── src/
-
-│   ├── components/
-
-│   ├── pages/
-
-│   ├── hooks/
-
-│   ├── App.jsx
-
-│   ├── index.js
-
-├── tailwind.config.js
-
-├── package.json
+src/
+└── app/
+    ├── components/          # Reusable and feature-specific components
+    ├── guards/              # Route guards for protecting routes
+    ├── interfaces/          # TypeScript interfaces and models
+    ├── services/            # Reusable services for business logic and API calls
+    ├── app.component.css    # Root component styles
+    ├── app.component.html   # Root component template
+    ├── app.component.spec.ts# Unit tests for root component
+    ├── app.component.ts     # Root component logic
+    ├── app.config.ts        # App-wide configuration (e.g. constants)
+    └── app.routes.ts        # Application routing configuration
 
  
